@@ -95,6 +95,13 @@ public class ClientConsole implements ChatIF
         ("Unexpected error while reading from console!");
     }
   }
+  
+  public void closeConnection(){
+		  System.out.println("Server is closed");
+		  System.exit(1);
+	  
+	  
+  }
 
   /**
    * This method overrides the method in the ChatIF interface.  It
