@@ -90,5 +90,11 @@ public class ChatClient extends AbstractClient
     catch(IOException e) {}
     System.exit(0);
   }
+
+  public void closeClient(){
+	  System.out.println("Server shutdown quitting client");
+	  quit();
+  }
+  
 }
 //End of ChatClient class

@@ -72,6 +72,8 @@ public class ClientConsole implements ChatIF
   
   //Instance methods ************************************************
   
+  
+  
   /**
    * This method waits for input from the console.  Once it is 
    * received, it sends it to the client's message handler.
@@ -96,12 +98,7 @@ public class ClientConsole implements ChatIF
     }
   }
   
-  public void closeConnection(){
-		  System.out.println("Server is closed");
-		  System.exit(1);
-	  
-	  
-  }
+  
 
   /**
    * This method overrides the method in the ChatIF interface.  It
@@ -114,8 +111,6 @@ public class ClientConsole implements ChatIF
     System.out.println("> " + message);
   }
 
-  
-  
   //Class methods ***************************************************
   
   /**
@@ -126,17 +121,26 @@ public class ClientConsole implements ChatIF
   public static void main(String[] args) 
   {
     String host = "";
-
-
+    
+    int port;
+    
     try
     {
-      host = args[0];
+    	host = args[0];
+      	port = Integer.parseInt(args[1]);
     }
     catch(ArrayIndexOutOfBoundsException e)
     {
-      host = "localhost";
+    	host = "localhost";
+      	port = DEFAULT_PORT;
     }
-    ClientConsole chat= new ClientConsole(host, DEFAULT_PORT);
+    catch(NumberFormatException b)
+    {
+    	port = DEFAULT_PORT;
+    	
+    }
+    
+    ClientConsole chat= new ClientConsole(host, port);
     chat.accept();  //Wait for console data
   }
 }
